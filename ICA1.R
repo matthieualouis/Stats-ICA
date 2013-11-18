@@ -21,6 +21,14 @@ summaryplots <- function(data) {
 summarisemodel <- function(lm) {
   # Get the residuals from the data
   summary(lm)
+  
+  nox.res <-residuals(nox.fit);
+  nox.stdres <- rstandard(nox.fit);
+  
+  # Plotting QQ plot of standardised Residuals
+  qqnorm(nox.stdres);
+  qqline(nox.stdres, col = 2);
+  
   lmsum(lm)
 }
 
@@ -47,16 +55,13 @@ summarisemodel(log.fit)
 loginteractions.fit <- lm(nox ~ noxem * ws * humidity, data=logdata);
 summarisemodel(loginteractions.fit)
 
-# Plotting QQ plot of standardised Residuals
-qqnorm(nox.stdres);
-qqline(nox.stdres, col = 2);
-
 # Plotting Residuals with respect to Predictors:
 par( oma=c(1,1,3,1) );
 par( mfrow=c(1,3) );
 plot( nox.stdres, X[,1], ylab="Noxem predictors", xlab="Standardised residuals" )
 plot( nox.stdres, X[,2], ylab="Wind Speed predictors", xlab = "Standardised residuals")
 plot( nox.stdres, X[,3], ylab="Humidity predictors", xlab = "Standardised residuals")
+par(mfrow=c(1,1))
 
 # Auto-correlation ! 
 acf(data$nox)
