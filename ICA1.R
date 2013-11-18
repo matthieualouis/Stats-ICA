@@ -23,8 +23,8 @@ Y = as.matrix(data[,'nox']);
 
 nox.fit <- lm(Y ~ X[,1] + X[,2] + X[,3]);
 summary(nox.fit);
-nox.res <-residuals(fit);
-nox.stdres <- rstandard(fit);
+nox.res <-residuals(nox.fit);
+nox.stdres <- rstandard(nox.fit);
 qqnorm(nox.stdres);
 qqline(nox.stdres, col = 2);
 
