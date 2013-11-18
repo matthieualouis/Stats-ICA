@@ -35,8 +35,10 @@ qqnorm(nox.stdres);
 qqline(nox.stdres, col = 2);
 
 # Plotting Residuals with respect to Predictors:
-plot(nox.stdres,X[,1])
-plot(nox.stdres,X[,2])
-plot(nox.stdres,X[,3])
+par( oma=c(1,1,3,1) );
+par( mfrow=c(1,3) );
+plot( nox.stdres, X[,1], ylab="Noxem predictors", xlab="Standardised residuals" )
+plot( nox.stdres, X[,2], ylab="Wind Speed predictors", xlab = "Standardised residuals")
+plot( nox.stdres, X[,3], ylab="Humidity predictors", xlab = "Standardised residuals")
 
 
