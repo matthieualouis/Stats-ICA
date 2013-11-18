@@ -30,5 +30,19 @@ In order to analyse how well our model fits the model, we try to convince oursel
 \
 	%Plot: Standardised Residuals.\
 \
-If the assumptions of the model were respected, we would expect the residuals to be normally distributed around 0. However, we notice a lot of outliers which do not correspond to a  Normal(0,1). The plot also suggests the presence  heteroskedasticity, as the concentration of points seems to vary through time.\
+If the assumptions of the model were respected, we would expect the residuals to be normally distributed around 0. However, we notice a lot of outliers which do not correspond to a  Normal(0,1). The plot also suggests the presence of heteroskedasticity (i.e. a non constant variance through time). Indeed, we can see that the concentration of points varies through time. We further analyse the following 4 plots regarding the residuals of our model.\
+\
+	%Plot: 4plots\
+\
+1. Residuals vs Fitted : Residuals vs Predicted Y. The negative values of Y + high positive Residuals indicate that our model predict negative values and the residuals compensate to zero. \
+	-> There shouldn\'92t be no pattern. + mean of zero.\
+	-> Non-linearity, power law decay?\
+\
+2. Normal QQ-plot. Confirming the non-Gaussian(0,1) from above.\
+\
+3. Same are Residuals and Fitted, but using the standardised errors.\
+\
+4. Cook\'92s Distance.  ( ? Don\'92t have to say anything ).\
+\
+	\
 }
