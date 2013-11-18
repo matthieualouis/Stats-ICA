@@ -28,5 +28,7 @@ nox.stdres <- rstandard(nox.fit);
 qqnorm(nox.stdres);
 qqline(nox.stdres, col = 2);
 
-
+# Some analytics plots
+par(mfrow=c(2,2))
+plot(nox.fit,which=c(1,2,3,4),ask=FALSE)
 
