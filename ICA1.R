@@ -21,19 +21,12 @@ acf(data$nox)
 X = as.matrix(data[,c('noxem','ws','humidity')]);
 Y = as.matrix(data[,'nox']);
 
-#  Linear Regression
-betahat = solve(t(X) %*% X)%*%t(X)%*% Y ;
+nox.fit <- lm(Y ~ X[,1] + X[,2] + X[,3]);
+summary(nox.fit);
+nox.res <-residuals(fit);
+nox.stdres <- rstandard(fit);
+qqnorm(nox.stdres);
+qqline(nox.stdres, col = 2);
 
-# RSS
-RSS = t(Y)%*%Y - t(betahat)%*%t(X)%*%Y;
-
-# Residuals
-ehat = Y - X%*%betahat;
-
-# Overall Standardised Residuals
-
-fit <- lm(Y ~ X[,1] + X[,2] + X[,3]);
-summary(fit);
-plot(residuals(fit));
 
 
