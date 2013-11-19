@@ -41,7 +41,7 @@ X = as.matrix(data[,c('noxem','ws','humidity')]);
 Y = as.matrix(data[,'nox']);
 
 # Simple linear case
-nox.fit <- lm(nox ~ noxem + ws + humidity, data=data);
+nox.fit <- lm(nox ~ noxem^0.2 + ws^0.2 + humidity^0.2, data=data);
 summarisemodel(nox.fit)
 plot(rstandard(nox.fit), xlab = "Standard Residuals", ylab = "Index")
 

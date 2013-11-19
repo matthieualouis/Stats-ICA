@@ -81,13 +81,31 @@ We start by plotting the Scatter Plots of all variables against each other
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename MatrixPlot.eps
+	scale 50
 
 \end_inset
 
@@ -155,7 +173,7 @@ Our aim is to build a model from the ground up in multiple stages.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection*
 
 \size large
 1.
@@ -169,7 +187,7 @@ We introduce the following simple linear model:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-Y=X\beta & +e
+Y=\mathbf{X\boldsymbol{\mathbf{\mathbf{\beta}}}} & +\mathbf{e}
 \end{align*}
 
 \end_inset
@@ -178,13 +196,21 @@ Y=X\beta & +e
 \end_layout
 
 \begin_layout Standard
+where we have: 
 \begin_inset Formula 
 \begin{align*}
-X=(\begin{array}{c}
+X=\left(\begin{array}{c}
 X1\\
 X2\\
 X3
-\end{array}) & ,e
+\end{array}\right) & ,\boldsymbol{\:\beta=\left(\begin{array}{cccc}
+\beta_{o} & \beta_{1} & \beta_{2} & \beta_{3}\end{array}\right)},\:\boldsymbol{e}=\left(\begin{array}{c}
+e_{1}\\
+e_{2}\\
+.\\
+.\\
+e_{T}
+\end{array}\right)
 \end{align*}
 
 \end_inset
@@ -230,6 +256,22 @@ We calculate the parameters of our model through a simple linear regression
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Tabular
