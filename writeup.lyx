@@ -89,7 +89,7 @@ The Matrix plot will help us visually test our assumptions with our various
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -725,12 +725,7 @@ we noted earlier that the Humidity had little visible relationship with
  
 \end_layout
 
-\begin_layout Paragraph
-2.
- A Simpler Linear Model
-\end_layout
-
-\begin_layout Paragraph
+\begin_layout Subsection*
 3.
  Transformation of variables
 \end_layout
@@ -739,12 +734,33 @@ we noted earlier that the Humidity had little visible relationship with
 We flagged up a couple of times in our report the possible existence of
  a non-linear relationship in between some of our variables, notably in
  between NOxem and the Wind Speed.
- In order to account for this, we could try out different non-linear models.
- However, a better approach to verify this relationship would be to take
+ In order to account for this, we could try different non-linear transformations
+ of the data.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Power Transformation
+\end_layout
+
+\begin_layout Standard
+We noticed a positve power relationship between noxem and nox
+\end_layout
+
+\begin_layout Subsubsection*
+Log Model
+\end_layout
+
+\begin_layout Standard
+However, a better approach to verify this relationship would be to take
  the log transform of all the variables of our model.
  Indeed, taking the log of variables reduces the problem of finding the
  appropriate exponentiation to finding a simple multiplicative constant.
- We write down our model in the following way:
+ 
+\end_layout
+
+\begin_layout Standard
+We write down our model in the following way:
 \end_layout
 
 \begin_layout Standard
@@ -773,7 +789,7 @@ We draw again the matrix plot of our data (we include
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -834,7 +850,7 @@ name "fig:Matrix-Log"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -895,13 +911,21 @@ Question 2
 \end_layout
 
 \begin_layout Standard
-Some useful things:
+First we find expressions for the residual
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-H=X\left(X^{\top}X\right)^{-1}X^{\top}
+\hat{\mathbf{e}}=Y-\hat{Y}=Y-HY=(\mathbb{I}-H)Y
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{\mathbf{e}}^{\top}=Y^{\top}(\mathbb{I}-H)
 \]
 
 \end_inset
@@ -910,61 +934,33 @@ H=X\left(X^{\top}X\right)^{-1}X^{\top}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-\hat{\beta}=X^{-1}H
-\]
-
+And use this, together with the properties of 
+\begin_inset Formula $H$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-\hat{y}=Hy
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-e=\mathbf{y}-X\beta
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-X^{\top}=\left(X\left(X^{\top}X\right)^{-1}\right)^{-1}H=X^{\top}XX^{-1}H=X^{\top}H
-\]
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\mathbf{e}^{\top}\mathbf{e} & =\left(\mathbf{y}-X\hat{\beta}\right)^{\top}\left(\mathbf{y}-X\hat{\beta}\right)\\
- & =\mathbf{y^{\top}}\mathbf{y}-2\hat{\beta}^{\top}X^{\top}\mathbf{y}+\hat{\beta}^{\top}X^{\top}X\hat{\beta}\\
-\mathbf{y^{\top}}\mathbf{y} & =\mathbf{e}^{\top}\mathbf{e}+\hat{\beta}^{\top}\left[X^{\top}X\hat{\beta}-2X^{\top}\mathbf{y}\right]\\
- & =\mathbf{e}^{\top}\mathbf{e}+\hat{\beta}^{\top}\left[X^{\top}XX^{-1}H\mathbf{y}-2X^{\top}H\mathbf{y}\right]\\
- & =\mathbf{e}^{\top}\mathbf{e}+\hat{\beta}^{\top}\left[X^{\top}H\mathbf{y}-2X^{\top}H\mathbf{y}\right]
+\hat{\mathbf{e}}^{\top}\hat{\mathbf{e}} & =Y^{\top}(\mathbb{I}-H)(\mathbb{I}-H)Y\\
+ & =(Y^{\top}-H)(Y^{\top}-H)\\
+ & =Y^{\top}Y-2Y^{\top}H+Y^{\top}H^{2}Y\\
+ & =Y^{\top}Y-2Y^{\top}H+Y^{\top}HY\:\text{(Idempotence)}\\
+ & =Y^{\top}Y-Y^{\top}HY\\
+ & =Y^{\top}Y-Y^{\top}H^{2}Y\:\text{(Idempotence)}\\
+ & =Y^{\top}Y-Y^{\top}H^{\top}HY\:\text{(Symmetry)}\\
+ & =Y^{\top}Y-\bar{Y}^{\top}\bar{Y}
 \end{align*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-\mathbf{y}^{\top}\mathbf{y} & =\left(\mathbf{X}\mathbf{\mathbf{\beta}}+\mathbf{e}\right)^{\top}\left(\mathbf{X}\mathbf{\mathbf{\beta}}+\mathbf{e}\right)\\
- & =\mathbf{\beta^{\top}}\mathbf{X}^{\top}\mathbf{X}\mathbf{\mathbf{\beta}}+2\mathbf{e}^{\top}\mathbf{X}\mathbf{\mathbf{\beta}}+\mathbf{e}^{\top}\mathbf{e}
-\end{align*}
+\[
+Y^{\top}Y=\bar{Y}^{\top}\bar{Y}+\hat{\mathbf{e}}^{\top}\hat{\mathbf{e}}
+\]
 
 \end_inset
 
