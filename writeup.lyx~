@@ -462,18 +462,7 @@ Residuals vs Fitted Values.
 \begin_layout Itemize
 The Normal Q-Q plot confirms that the residuals are not Normally Distributed.
  We see a strong deviation from the expected line if it was Normally Distributed
- with mean 0.
-\end_layout
-
-\begin_layout Standard
-Clearly, we have shown that a simple linear model performs poorly when trying
- to model the data and we need to improve on it.
- Before we start making our model more complicated by adding more features
- or modelling complex relationship, we come back to Ocam's Razzor and try
- to simplify.
- Indeed, going back to our initial Matrix plot, we noted earlier that the
- Humidity had little visible relationship with NOx.
- 
+ with mean 0
 \end_layout
 
 \begin_layout Section*
