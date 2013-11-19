@@ -73,9 +73,14 @@ Question 1
 
 \begin_layout Standard
 We start by plotting the Scatter Plots of all variables against each other
- (also known as a Matrix Plot) in order to gain a first insight in our data.
+ (also known as a Matrix Plot) in order to gain a first insight into any
+ independence, linear, and non-linear relationships in our data.
  The Matrix plot will help us write a basic model that we will improve until
  we are satisfied with it.
+ 
+\series bold
+The Matrix plot will help us visually test our assumptions with our various
+ models.
  
 \end_layout
 
@@ -117,6 +122,13 @@ centering
 
 \begin_layout Plain Layout
 Matrix Plot
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Matrix-Plot"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -130,7 +142,14 @@ Matrix Plot
 \end_layout
 
 \begin_layout Standard
-From the above we notice the following :
+From Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Matrix-Plot"
+
+\end_inset
+
+, we notice the following :
 \end_layout
 
 \begin_layout Itemize
