@@ -224,18 +224,16 @@ Y=\mathbf{X\boldsymbol{\mathbf{\mathbf{\beta}}}} & +\mathbf{e}
 where we have: 
 \begin_inset Formula 
 \begin{align*}
-X=\left(\begin{array}{c}
-X1\\
-X2\\
-X3
-\end{array}\right) & ,\boldsymbol{\:}\boldsymbol{\beta}\boldsymbol{=\left(\begin{array}{cccc}
-\beta_{0} & \beta_{1} & \beta_{2} & \beta_{3}\end{array}\right)},\:\boldsymbol{e}=\left(\begin{array}{c}
+X=\left(\begin{array}{ccc}
+X_{1} & X_{2} & X_{3}\end{array}\right) & ,\boldsymbol{\:}\boldsymbol{\beta}\boldsymbol{=\left(\begin{array}{cccc}
+\beta_{0} & \beta_{1} & \beta_{2} & \beta_{3}\end{array}\right)}^{T},\:\boldsymbol{e}=\left(\begin{array}{c}
 e_{1}\\
 e_{2}\\
 .\\
 .\\
 e_{T}
-\end{array}\right)
+\end{array}\right),\: X_{i}=\left(\begin{array}{cccc}
+1 & x_{i1} & ... & x_{im}\end{array}\right)
 \end{align*}
 
 \end_inset
@@ -245,7 +243,24 @@ e_{T}
 
 \begin_layout Standard
 Where Y is the NOx concentration, X1 the total emission of NOx from cars,
- X2 the Wind Speed and X3 the Humidity.
+ X2 the Wind Speed and X3 the Humidity, 
+\begin_inset Formula $x_{ij}$
+\end_inset
+
+ the 
+\begin_inset Formula $j^{th}$
+\end_inset
+
+ data point of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ .
+ 
+\begin_inset Formula $m$
+\end_inset
+
+ is the number of samples.
  
 \end_layout
 
