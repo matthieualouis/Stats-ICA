@@ -1065,15 +1065,14 @@ As a futher extension to this plot we also considered a model with interations
  of the result is so obfuscated that it is useless.
 \end_layout
 
-\begin_layout Paragraph
-4.
- Power model
+\begin_layout Subsubsection*
+Power model
 \end_layout
 
 \begin_layout Standard
 When trying different power transformations, one recurring phenomena we
- observed in our modeling trials was that the shape of the mean of the Residuals
- with respect to the Fitted Values always presented a 
+ observed in our modelling trials was that the shape of the mean of the
+ Residuals with respect to the Fitted Values always presented a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1088,18 +1087,128 @@ smile
 \end_inset
 
 .
- That is we modeled the data in the following way:
+ That is we modelled the data in the following way:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\sqrt[5]{Y_{i}} & =
+\sqrt[5]{Y_{i}} & =\beta_{0}+\beta_{1}\sqrt[5]{x_{1}}+\beta_{2}\sqrt[5]{x_{2}}
 \end{align*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename PowerModelMatrixPlot.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Matrix plot of our Power Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename PowerModelSummaryPlots.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Summary plots of our Power Model Residuals
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see from the matrix plot that this transformation succeeds in making
+ the mean of the residuals constantly equal to zero.
+ The Q-Q plot and the Standardised residuals looks very good in this model.
+ This seems like a adequate model to parametrize our data.
+ However, due to the analytical intractability and lack of clear relationship
+ with real-world values, we prefer the log model we derived previously.
+ This decision to choose the simpler model is also motivated by the fact
+ that we need to present our findings in a report that is destined for the
+ Institute and se we try to keep our results easy to understand.
 \end_layout
 
 \begin_layout Subsection*
