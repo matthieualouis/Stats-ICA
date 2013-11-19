@@ -730,17 +730,21 @@ we noted earlier that the Humidity had little visible relationship with
  A Simpler Linear Model
 \end_layout
 
+\begin_layout Standard
+We flagged up a couple of times in our report the possible existence of
+ a non-linear relationship in between some of our variables, notably in
+ between NOxem and the Wind Speed.
+ In order to account for this, we could try out different non-linear models.
+ 
+\end_layout
+
 \begin_layout Paragraph
 3.
  Transformation of variables
 \end_layout
 
 \begin_layout Standard
-We flagged up a couple of times in our report the possible existence of
- a non-linear relationship in between some of our variables, notably in
- between NOxem and the Wind Speed.
- In order to account for this, we could try out different non-linear models.
- However, a better approach to verify this relationship would be to take
+However, a better approach to verify this relationship would be to take
  the log transform of all the variables of our model.
  Indeed, taking the log of variables reduces the problem of finding the
  appropriate exponentiation to finding a simple multiplicative constant.
@@ -765,6 +769,90 @@ We draw again the matrix plot of our data (we include
 
  in order to confirm that we don't need it in our model).
  Indeed, we see that after taking the log of the variables, the plot looks
+ 
+\end_layout
+
+\begin_layout Standard
+Looking at the p-values of the t-test for each of the variables, we noticed
+ that both the intercept and
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ are not significant.
+ 
+\end_layout
+
+\begin_layout Standard
+In order to check if these two quantities were both redundant, we performed
+ the Fisher test between the two nested models: 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\log Y_{i}=\beta_{1}\log(X_{1i})+\beta_{2}\log(X_{2i})$
+\end_inset
+
+ and
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $\log Y_{i}=\beta_{0}+\beta_{1}\log(X_{1i})+\beta_{2}\log(X_{2i})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+The p-value of the test turned out to be around 0.5, which means that we
+ can remove 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ without apporting any significant modification to the performance of the
+ model.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+Doing so, the value of 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ increased from 0.63 to 0.98.
  
 \end_layout
 
@@ -884,6 +972,43 @@ name "fig:Summary-Log"
 \begin_layout Plain Layout
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+4.
+ Power model
+\end_layout
+
+\begin_layout Standard
+When trying different power transformations, one recurring phenomena we
+ observed in our modelling trials was that the shape of the mean of the
+ Residuals with respect to the Fitted Values always presented a 
+\begin_inset Quotes eld
+\end_inset
+
+smile
+\begin_inset Quotes erd
+\end_inset
+
+.
+ We concentrated our efforts on making that mean constantly zero.
+ The power which seems to adequately produce this result was 
+\begin_inset Formula $\frac{1}{5}$
+\end_inset
+
+.
+ That is we modelled the data in the following way:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sqrt[5]{Y_{i}} & =
+\end{align*}
 
 \end_inset
 
