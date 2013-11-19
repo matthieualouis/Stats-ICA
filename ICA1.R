@@ -45,6 +45,7 @@ Y = as.matrix(data[,'nox']);
 nox.fit <- lm(nox ~ noxem + ws + humidity, data=data);
 summarisemodel(nox.fit)
 summary(nox.fit)
+plot(rstandard(nox.fit), xlab = "Index", ylab = "Standard Residuals")
 
 # Try some log models
 logdata = log(data)

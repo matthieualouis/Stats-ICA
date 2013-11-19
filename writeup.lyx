@@ -71,6 +71,739 @@ Shaun Dowling, Matthieu Louis, Sara Zannone
 Question 1
 \end_layout
 
+\begin_layout Standard
+We start by plotting the Scatter Plots of all variables against each other
+ (also known as a Matrix Plot) in order to gain a first insight into any
+ independence, linear, and non-linear relationships in our data.
+ The Matrix plot will help us write a basic model that we will improve until
+ we are satisfied with it.
+ 
+\series bold
+The Matrix plot will help us visually test our assumptions with our various
+ models.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename MatrixPlot.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Matrix Plot
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Matrix-Plot"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Matrix-Plot"
+
+\end_inset
+
+, we notice the following :
+\end_layout
+
+\begin_layout Itemize
+A positive relationship between NOx and NOxem.
+ NOx in some way scales with Noxem, but it looks like the variance scales
+ as well.
+ Hence we might have heteroskedasticity effect ; we will investigate this
+ in later stages but it imples that there is a non-linear relationship.
+ 
+\end_layout
+
+\begin_layout Itemize
+We also observe a strong negative relationship between NOx and the Wind
+ Speed, the nature of the relationship does seems non-linear and we observe
+ some sort of 
+\begin_inset Quotes eld
+\end_inset
+
+power law decay
+\begin_inset Quotes erd
+\end_inset
+
+ pattern in the data.
+\end_layout
+
+\begin_layout Itemize
+Finally, the plots regarding the other variables against Humidity present
+ less clear relationships.
+ We will investigate these relationships and how they impact our choice
+ of model.
+ 
+\end_layout
+
+\begin_layout Standard
+Our aim is to build a model from the ground up in multiple stages 
+\series bold
+in increasing order of complexity
+\series default
+.
+ That is, we will start with a relatively simple model and analyse its ability
+ to model salient features of our data.
+ By understanding the flaws of our model, we will iteratively try to improve
+ them until we are happy to submit our model to the Institute.
+ We start with a basic Multiple Linear Model, which we do not expect to
+ perform well due to the non-linear relationships we observe in the data.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\size large
+1.
+ Multiple Linear Model.
+\end_layout
+
+\begin_layout Standard
+We introduce the following simple linear model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+Y=\mathbf{X\boldsymbol{\mathbf{\mathbf{\beta}}}} & +\mathbf{e}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where we have: 
+\begin_inset Formula 
+\begin{align*}
+X=\left(\begin{array}{c}
+X1\\
+X2\\
+X3
+\end{array}\right) & ,\boldsymbol{\:}\boldsymbol{\beta}\boldsymbol{=\left(\begin{array}{cccc}
+\beta_{0} & \beta_{1} & \beta_{2} & \beta_{3}\end{array}\right)},\:\boldsymbol{e}=\left(\begin{array}{c}
+e_{1}\\
+e_{2}\\
+.\\
+.\\
+e_{T}
+\end{array}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where Y is the NOx concentration, X1 the total emission of NOx from cars,
+ X2 the Wind Speed and X3 the Humidity.
+ 
+\end_layout
+
+\begin_layout Standard
+The simple Multiple Linear Model is based on a set of strong assumptions:
+ 
+\end_layout
+
+\begin_layout Itemize
+A linear relationship in between the predictors (NOxem level, Wind Speed,
+ Humidity).
+ 
+\end_layout
+
+\begin_layout Itemize
+The errors 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+'s are independent and Normally Distributed 
+\begin_inset Formula $\mathbb{N}(0,\sigma^{2})$
+\end_inset
+
+.
+ As a result, 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+ are also Normally Distributed.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is contant through time.
+ 
+\end_layout
+
+\begin_layout Standard
+We calculate the parameters of our model through a simple linear regression
+ in R.
+ The resulting parameters are summarised in the following table.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\beta_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\hat{\beta_{1}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\beta_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\beta_{3}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Estimated Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+92.94756
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.03615
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-27.33804 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-7.22754
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Estimated Parameters of our Linear Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to analyse how well our model fits the model, we check whether
+ the previous assumptions hold.
+ We take a closer look at the standardised residuals, i.e.
+ residuals normalised by each of their variance in order to get Standard
+ Normally Distributed residuals.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename StdResidual.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Standardised Residuals
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The model assumes that the Standardised Residuals are normally distributed
+ around 0 with variance 1.
+ Clearly the plot suggests otherwise.
+ Firstly, we have too many points located at 
+\begin_inset Quotes eld
+\end_inset
+
+outlier
+\begin_inset Quotes erd
+\end_inset
+
+ positions under a Gaussian Distribution of mean 0 and variance 1.
+ The empirical distribution of our Standardised Residuals seem skewed towards
+ positive values.
+ The plot also suggests the presence of heteroskedasticity (i.e.
+ a non constant variance through time).
+ Indeed, we can see that the concentration of points varies through time.
+ Clearly the assumption that the errors are Normally Distributed with mean
+ 0 and constant variance sigma is wrong.
+\end_layout
+
+\begin_layout Standard
+We look further into the flaws of this model by analyzing the following
+ 4 plots.
+ We will also try to extract interesting relationships that might help us
+ build a better model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename LinModelSummaryPlots.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Summary Plots on Residuals of our Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Residuals vs Fitted Values.
+ This is informative because it gives us an idea of how the residuals are
+ distributed relative to the fitted values ( the estimated 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+).
+ A big flaw of this Linear Model is that it estimates a significant number
+ of negative values for 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+ whereas this clearly can't be possible since Y is a concentration.
+ For our next models, we will check for this.
+ This hints us towards the fact that we must have power law decay in 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+ one of the estimators as to avoid 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+ being negative.
+ 
+\end_layout
+
+\begin_layout Itemize
+The Normal Q-Q plot confirms that the residuals are not Normally Distributed.
+ We see a strong deviation from the expected line if it was Normally Distributed
+ with mean 0.
+\end_layout
+
+\begin_layout Standard
+Clearly, we have shown that a simple linear model performs poorly when trying
+ to model the data and we need to improve on it.
+ Before we start making our model more complicated by adding more features
+ or modelling complex relationship, we follow Occam's principle of parsimony
+ and try to only model the needed relationships.
+ Indeed, going back to our initial Matrix plot, we noted earlier that the
+ Humidity had little visible relationship with NOx.
+ 
+\end_layout
+
+\begin_layout Paragraph
+2.
+ Less variables Models
+\end_layout
+
+\begin_layout Paragraph
+3.
+ Transformation of variables
+\end_layout
+
+\begin_layout Standard
+We flagged up a couple of times in our report the existence of a non-linear
+ relationship in between some of our variables, notably in between NOxem
+ and the Wind Speed.
+ In order to account for this, we could try out different non-linear models.
+ However, a better approach to verify the existence of this relationship
+ would be to take the log transform of all the variables of our model.
+ Indeed, taking the log of variables reduces the problem of finding the
+ appropriate exponentiation to finding a simple multiplicative constant.
+ We write down our model in the following way:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\log Y_{i}=\beta_{0}+\beta_{1}\log(X_{1i})+ & \beta_{2}\log(X_{2i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We draw again the matrix plot of our data (we include 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ in order to confirm that we don't need it in our model).
+ The plot clearly shows that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename LogModelMatrixPlot.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Matrix Plot of our Log-transformed variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename LogModelSummaryPlots.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Summary Plots of the Residuals of our Log-transformed Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Question 2
 \end_layout
