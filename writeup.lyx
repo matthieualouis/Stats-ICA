@@ -539,7 +539,6 @@ centering
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename StdResidual.eps
-	scale 50
 
 \end_inset
 
@@ -709,15 +708,89 @@ The Normal Q-Q plot confirms that the residuals are not Normally Distributed
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename AutoPlot.eps
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Autocorrolation
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Temporal-Plot"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+We notice from Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Temporal-Plot"
+
+\end_inset
+
+ the possible existence trend line through time.
+ We hypothesize that the NOxem level recorded (sum of NOx emission by cars
+ from the motorway) to be very dependent on time.
+ Indeed, we expect the number of cars to drive on the motorway to depent
+ a lot on the time of day.
+ We further investigate this by looking at the autocorrelogram of the NOx
+ and NOxem.
+ The autocorrelogram of the NOxem suggests that our hypothesis was correct,
+ we can observed a sinusoidal curve with period around 5 or 6, which correspond
+ to how many samples were taken per day.
+ This is a strong indication that we could use time of the day to improve
+ our estimation of Y.
+ However, this goes beyond the scope of the module and so we won’t include
+ this temporal dependency in our next models.
+\end_layout
+
+\begin_layout Standard
 We have shown that a simple linear model performs poorly when trying to
  model the data and we need to improve on it.
  Before we start making our model more complicated by adding more features
  or modelling complex relationship, we follow Occam's principle of parsimony,
  and try to only model the needed relationships.
- Indeed, going back to our initial Matrix plot, 
-\series bold
-we noted earlier that the Humidity had little visible relationship with
- NOx.
+ Indeed, going back to our initial Matrix plot, we noted earlier that the
+ Humidity had little visible relationship with NOx.
  
 \end_layout
 
@@ -985,6 +1058,13 @@ name "fig:Summary-Log"
 
 \end_layout
 
+\begin_layout Standard
+As a futher extension to this plot we also considered a model with interations
+ between the logarithms of the data.
+ Although we were able to achieve a better fit, we feel that the meaning
+ of the result is so obfuscated that it is useless.
+\end_layout
+
 \begin_layout Paragraph
 4.
  Power model
@@ -992,8 +1072,8 @@ name "fig:Summary-Log"
 
 \begin_layout Standard
 When trying different power transformations, one recurring phenomena we
- observed in our modelling trials was that the shape of the mean of the
- Residuals with respect to the Fitted Values always presented a 
+ observed in our modeling trials was that the shape of the mean of the Residuals
+ with respect to the Fitted Values always presented a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1008,7 +1088,7 @@ smile
 \end_inset
 
 .
- That is we modelled the data in the following way:
+ That is we modeled the data in the following way:
 \end_layout
 
 \begin_layout Standard
@@ -1020,6 +1100,54 @@ smile
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection*
+Report to the Environmental research institute 
+\end_layout
+
+\begin_layout Standard
+We have shown that it is adequate to model the Nitrogen Oxide (NOx) pollution
+ content in the ambient air as the product of the sum of NOx emission of
+ cars from the motorway and wind speeds.
+\end_layout
+
+\begin_layout Standard
+We have found strong evidence that Humidity in the air does not add to our
+ model.
+ The variations observed are due to random noise or the effect through the
+ other variables.
+ Generally, the model seems to be useful in predicting values of NOx pollution
+ content especially for non-extreme occurrences.
+ 
+\end_layout
+
+\begin_layout Standard
+We can estimate the NOx pollution content as follows: 
+\end_layout
+
+\begin_layout Itemize
+Multiplying the sum of NOx emission of cars from the motorway by 2, on average,
+ multiplies by 1.5618 (2^0.643281) the NOx pollution content.
+ This is a strongly significant effect.
+ 
+\end_layout
+
+\begin_layout Itemize
+If the wind speed is multiplied by 2, on average, divides by 1.5760 ( 1/2^-0.65625
+2) the NOx pollution content.
+ This is a strongly significant effect.
+ 
+\end_layout
+
+\begin_layout Standard
+In the above estimation, we assume that all the other variables are held
+ constant.
+ Our result conform with our intuition.
+ Indeed, as the sum of NOx emitted by the cars on the motorway increases,
+ the NOx pollution content increases.
+ As the wind speed increases, the gas particles are more dissipated and
+ the NOx pollution content decreases.
 \end_layout
 
 \begin_layout Section*
