@@ -153,18 +153,18 @@ reference "fig:Matrix-Plot"
 \end_layout
 
 \begin_layout Itemize
-A linear relationship in between NOx and NOxem.
- NOx seems to scale with Noxem, but it looks like the variance scales as
- well.
+A positive relationship between NOx and NOxem.
+ NOx in some way scales with Noxem, but it looks like the variance scales
+ as well.
  Hence we might have heteroskedasticity effect ; we will investigate this
- in later stages.
+ in later stages but it imples that there is a non-linear relationship.
  
 \end_layout
 
 \begin_layout Itemize
-We also observe a strong relationship in between NOx and the Wind Speed,
- the nature of the relationship does not seem very linear as we observe
- a 
+We also observe a strong negative relationship between NOx and the Wind
+ Speed, the nature of the relationship does seems non-linear and we observe
+ some sort of 
 \begin_inset Quotes eld
 \end_inset
 
@@ -176,19 +176,25 @@ power law decay
 \end_layout
 
 \begin_layout Itemize
-Finally, the plots regarding the other variables in our data set with respect
- to Humidity seems to present less obvious relationships.
- We will comment further on that in the rest of the excersise.
+Finally, the plots regarding the other variables against Humidity present
+ less clear relationships.
+ We will investigate these relationships and how they impact our choice
+ of model.
  
 \end_layout
 
 \begin_layout Standard
-Our aim is to build a model from the ground up in multiple stages.
- That is we start with a relatively simple model and analyse its ability
+Our aim is to build a model from the ground up in multiple stages 
+\series bold
+in increasing order of complexity
+\series default
+.
+ That is, we will start with a relatively simple model and analyse its ability
  to model salient features of our data.
  By understanding the flaws of our model, we will iteratively try to improve
- them until we are happy to submit our model to the Institure.
- We start with a basic Multiple Linear Model.
+ them until we are happy to submit our model to the Institute.
+ We start with a basic Multiple Linear Model, which we do not expect to
+ perform well due to the non-linear relationships we observe in the data.
  
 \end_layout
 
