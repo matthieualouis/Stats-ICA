@@ -576,27 +576,8 @@ reference "fig:Standardised-Residuals"
  suggests otherwise.
  Given these assumptions we expect 95% of data points to fall between -2
  and 2.
- In this case, 5.5% fall outside this region which in itself does not indiate
+ In this case, 5.5% fall outside this region which in itself does not indicate
  that strong a significance.
-
-\series bold
- too many points located at 
-\begin_inset Quotes eld
-\end_inset
-
-outlier
-\begin_inset Quotes erd
-\end_inset
-
- positions under a Gaussian Distribution of mean 0 and variance 1
-\series default
-.
-
-\series bold
- The empirical distribution of our Standardised Residuals seem skewed towards
- positive values.
-
-\series default
  More importantly, the plot also suggests the presence of heteroskedasticity
  (i.e.
  a non constant variance through time).
@@ -624,7 +605,7 @@ reference "fig:Summary-Linear"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -695,19 +676,18 @@ Residuals vs Fitted Values.
 
  when this can't be possible since Y is a concentration, a strictly positive
  value.
- For our next models, we will check for this.
- 
+ This is because we are fitting a downward sloping line to the data that
+ crosses the zero line too fast.
+ This indicates that 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+ doesn't drop linearly but instead according to some power law.
+
 \series bold
-This hints us towards the fact that we must have power law decay in 
-\begin_inset Formula $\hat{Y}$
-\end_inset
-
- one of the estimators as to avoid 
-\begin_inset Formula $\hat{Y}$
-\end_inset
-
- being negative.
  
+\series default
+For our next models, we will check for this.
 \end_layout
 
 \begin_layout Itemize
