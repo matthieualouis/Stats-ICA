@@ -89,7 +89,7 @@ The Matrix plot will help us visually test our assumptions with our various
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -294,6 +294,7 @@ We calculate the parameters of our model through a simple linear regression
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -479,9 +480,10 @@ In order to analyse how well our model fits the model, we check whether
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -561,9 +563,10 @@ We look further into the flaws of this model by analyzing the following
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -658,7 +661,7 @@ Clearly, we have shown that a simple linear model performs poorly when trying
 
 \begin_layout Paragraph
 2.
- Less variables Models
+ A Simpler Linear Model
 \end_layout
 
 \begin_layout Paragraph
@@ -667,12 +670,12 @@ Clearly, we have shown that a simple linear model performs poorly when trying
 \end_layout
 
 \begin_layout Standard
-We flagged up a couple of times in our report the existence of a non-linear
- relationship in between some of our variables, notably in between NOxem
- and the Wind Speed.
+We flagged up a couple of times in our report the possible existence of
+ a non-linear relationship in between some of our variables, notably in
+ between NOxem and the Wind Speed.
  In order to account for this, we could try out different non-linear models.
- However, a better approach to verify the existence of this relationship
- would be to take the log transform of all the variables of our model.
+ However, a better approach to verify this relationship would be to take
+ the log transform of all the variables of our model.
  Indeed, taking the log of variables reduces the problem of finding the
  appropriate exponentiation to finding a simple multiplicative constant.
  We write down our model in the following way:
@@ -681,7 +684,7 @@ We flagged up a couple of times in our report the existence of a non-linear
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\log Y_{i}=\beta_{0}+\beta_{1}\log(X_{1i})+ & \beta_{2}\log(X_{2i})
+\log Y_{i}=\beta_{0}+\beta_{1}\log(X_{1i})+ & \beta_{2}\log(X_{2i})+\beta_{3}\log(X_{3i})
 \end{align*}
 
 \end_inset
@@ -695,14 +698,16 @@ We draw again the matrix plot of our data (we include
 \end_inset
 
  in order to confirm that we don't need it in our model).
- The plot clearly shows that 
+ Indeed, we see that after taking the log of the variables, the plot looks
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -753,9 +758,10 @@ Matrix Plot of our Log-transformed variables
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
