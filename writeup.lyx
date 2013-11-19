@@ -75,12 +75,8 @@ Question 1
 We start by plotting the Scatter Plots of all variables against each other
  (also known as a Matrix Plot) in order to gain a first insight into any
  independence, linear, and non-linear relationships in our data.
- The Matrix plot will help us write a basic model that we will improve until
- we are satisfied with it.
- 
-\series bold
-The Matrix plot will help us visually test our assumptions with our various
- models.
+ The Matrix plot will help us find some features in the data that allow
+ us to improve our model.
  
 \end_layout
 
