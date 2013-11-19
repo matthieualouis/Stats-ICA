@@ -203,8 +203,8 @@ X=\left(\begin{array}{c}
 X1\\
 X2\\
 X3
-\end{array}\right) & ,\boldsymbol{\:\beta=\left(\begin{array}{cccc}
-\beta_{o} & \beta_{1} & \beta_{2} & \beta_{3}\end{array}\right)},\:\boldsymbol{e}=\left(\begin{array}{c}
+\end{array}\right) & ,\boldsymbol{\:}\boldsymbol{\beta}\boldsymbol{=\left(\begin{array}{cccc}
+\beta_{0} & \beta_{1} & \beta_{2} & \beta_{3}\end{array}\right)},\:\boldsymbol{e}=\left(\begin{array}{c}
 e_{1}\\
 e_{2}\\
 .\\
@@ -236,13 +236,29 @@ A linear relationship in between the predictors (NOxem level, Wind Speed,
 \end_layout
 
 \begin_layout Itemize
-The errors ei’s are independent and Normally Distributed N(0,sigma).
- As a result, Y’s are also Normally Distributed.
+The errors 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+'s are independent and Normally Distributed 
+\begin_inset Formula $\mathbb{N}(0,\sigma^{2})$
+\end_inset
+
+.
+ As a result, 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+ are also Normally Distributed.
  
 \end_layout
 
 \begin_layout Itemize
-Constant sigma throughout the data
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is contant through time.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -442,7 +458,56 @@ In order to analyse how well our model fits the model, we check whether
 \end_layout
 
 \begin_layout Standard
-%Plot: Standardised Residuals.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename StdResidual.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Standardised Residuals
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -87,9 +87,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 
 \backslash
 centering
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -226,13 +236,25 @@ A linear relationship in between the predictors (NOxem level, Wind Speed,
 \end_layout
 
 \begin_layout Itemize
-The errors ei’s are independent and Normally Distributed N(0,sigma).
- As a result, Y’s are also Normally Distributed.
+The errors 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+'s are independent and Normally Distributed 
+\begin_inset Formula $\mathbb{N}(0,\sigma^{2})$
+\end_inset
+
+.
+ As a result, 
+\begin_inset Formula $\hat{Y}$
+\end_inset
+
+ are also Normally Distributed.
  
 \end_layout
 
 \begin_layout Itemize
-Constant sigma throughout the data
+
 \end_layout
 
 \begin_layout Standard
