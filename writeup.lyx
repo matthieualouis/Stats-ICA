@@ -522,7 +522,7 @@ reference "fig:Standardised-Residuals"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -725,30 +725,11 @@ we noted earlier that the Humidity had little visible relationship with
  
 \end_layout
 
-<<<<<<< HEAD
-\begin_layout Paragraph
-2.
- A Simpler Linear Model
-\end_layout
-
-\begin_layout Standard
-We flagged up a couple of times in our report the possible existence of
- a non-linear relationship in between some of our variables, notably in
- between NOxem and the Wind Speed.
- In order to account for this, we could try out different non-linear models.
- 
-\end_layout
-
-\begin_layout Paragraph
-
 \begin_layout Subsection*
->>>>>>> e5b96dd89a73273ce688115f9ddbb30e89862543
-3.
- Transformation of variables
+Transformation of variables
 \end_layout
 
 \begin_layout Standard
-
 We flagged up a couple of times in our report the possible existence of
  a non-linear relationship in between some of our variables, notably in
  between NOxem and the Wind Speed.
@@ -770,7 +751,6 @@ Log Model
 \end_layout
 
 \begin_layout Standard
->>>>>>> e5b96dd89a73273ce688115f9ddbb30e89862543
 However, a better approach to verify this relationship would be to take
  the log transform of all the variables of our model.
  Indeed, taking the log of variables reduces the problem of finding the
