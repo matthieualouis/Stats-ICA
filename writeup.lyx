@@ -198,7 +198,7 @@ in increasing order of complexity
  
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph
 
 \size large
 1.
@@ -470,11 +470,6 @@ Estimated Parameters of our Linear Model
 \end_layout
 
 \begin_layout Standard
-%Plot: Regression Line on data.
- 
-\end_layout
-
-\begin_layout Standard
 In order to analyse how well our model fits the model, we check whether
  the previous assumptions hold.
  We take a closer look at the standardised residuals, i.e.
@@ -564,6 +559,59 @@ We look further into the flaws of this model by analyzing the following
  build a better model:
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename LinModelSummaryPlots.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Summary Plots on Residuals of our Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Residuals vs Fitted Values.
  This is informative because it gives us an idea of how the residuals are
@@ -601,11 +649,159 @@ The Normal Q-Q plot confirms that the residuals are not Normally Distributed.
 Clearly, we have shown that a simple linear model performs poorly when trying
  to model the data and we need to improve on it.
  Before we start making our model more complicated by adding more features
- or modelling complex relationship, we come back to Ocam's Razzor and try
- to simplify.
+ or modelling complex relationship, we follow Occam's principle of parsimony
+ and try to only model the needed relationships.
  Indeed, going back to our initial Matrix plot, we noted earlier that the
  Humidity had little visible relationship with NOx.
  
+\end_layout
+
+\begin_layout Paragraph
+2.
+ Less variables Models
+\end_layout
+
+\begin_layout Paragraph
+3.
+ Transformation of variables
+\end_layout
+
+\begin_layout Standard
+We flagged up a couple of times in our report the existence of a non-linear
+ relationship in between some of our variables, notably in between NOxem
+ and the Wind Speed.
+ In order to account for this, we could try out different non-linear models.
+ However, a better approach to verify the existence of this relationship
+ would be to take the log transform of all the variables of our model.
+ Indeed, taking the log of variables reduces the problem of finding the
+ appropriate exponentiation to finding a simple multiplicative constant.
+ We write down our model in the following way:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\log Y_{i}=\beta_{0}+\beta_{1}\log(X_{1i})+ & \beta_{2}\log(X_{2i})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We draw again the matrix plot of our data (we include 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ in order to confirm that we don't need it in our model).
+ The plot clearly shows that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename LogModelMatrixPlot.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Matrix Plot of our Log-transformed variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename LogModelSummaryPlots.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Summary Plots of the Residuals of our Log-transformed Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
