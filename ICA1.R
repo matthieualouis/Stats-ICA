@@ -1,5 +1,6 @@
-# Statistical Data and Analysis - ICA. 
-
+# Statistical Data and Analysis - ICA.
+#install.packages("robustbase")
+library(robustbase)
 # Plot the standard lin model plots
 lmsum <- function(lm) {
   # Some analytics plots
@@ -16,7 +17,7 @@ summaryplots <- function(data) {
   plot(data$noxem,data$nox)
   plot(data$ws,data$nox)
   plot(data$humidity,data$nox)
-}
+} 
 
 summarisemodel <- function(lm) {
   # Get the residuals from the data
@@ -43,9 +44,8 @@ Y = as.matrix(data[,'nox']);
 # Simple linear case
 nox.fit <- lm(nox ~ noxem + ws + humidity, data=data);
 summarisemodel(nox.fit)
+summary(nox.fit)
 plot(rstandard(nox.fit), xlab = "Index", ylab = "Standard Residuals")
-
-
 
 # Try some log models
 logdata = log(data)
@@ -53,6 +53,23 @@ logdata = log(data)
 # Simple log
 log.fit <- lm(nox ~ noxem + ws + humidity, data=logdata);
 summarisemodel(log.fit)
+summary(log.fit) 
+anova(lm(nox ~ noxem + ws -1, data=logdata), log.fit)
+log.fit_2 <-lm(nox ~ noxem + ws -1, data=logdata);
+summarisemodel(log.fit_2)
+summary(log.fit_2)
+log.fit_2_rob <- lmrob (nox ~ noxem + ws -1, data=logdata)
+summarisemodel(log.fit_2_rob)
+summary(log.fit_2_rob)
+
+#Model 5
+data_5 <- data.frame (data^(0.2))
+data_5_fit <- lm(nox ~ noxem + ws + humidity, data=data_5);
+summarisemodel(data_5_fit)
+summary(data_5_fit)
+data_5_fit_2 <- lm(nox ~ noxem + ws, data=data_5);
+summarisemodel(data_5_fit_2)
+summary(data_5_fit_2)
 
 # Better but OTT
 loginteractions.fit <- lm(nox ~ noxem * ws * humidity, data=logdata);
