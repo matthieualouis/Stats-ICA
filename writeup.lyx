@@ -250,8 +250,11 @@ Where Y is the NOx concentration, X1 the total emission of NOx from cars,
 \end_layout
 
 \begin_layout Standard
-The simple Multiple Linear Model is based on a set of strong assumptions:
- 
+The simple Multiple Linear Model 
+\series bold
+this model
+\series default
+ is based on a set of strong assumptions: 
 \end_layout
 
 \begin_layout Itemize
@@ -271,7 +274,7 @@ The errors
 
 .
  As a result, 
-\begin_inset Formula $\hat{Y}$
+\begin_inset Formula $\hat{Y}_{i}$
 \end_inset
 
  are also Normally Distributed.
@@ -282,14 +285,21 @@ The errors
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- is contant through time.
+ is contant across all the data.
  
 \end_layout
 
 \begin_layout Standard
 We calculate the parameters of our model through a simple linear regression
  in R.
- The resulting parameters are summarised in the following table.
+ The resulting parameters are summarised in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Estimated-Parameters-of"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -453,6 +463,13 @@ Estimated Value
 
 \begin_layout Plain Layout
 Estimated Parameters of our Linear Model
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Estimated-Parameters-of"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -472,7 +489,14 @@ Estimated Parameters of our Linear Model
 \begin_layout Standard
 In order to analyse how well our model fits the model, we check whether
  the previous assumptions hold.
- We take a closer look at the standardised residuals, i.e.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Standardised-Residuals"
+
+\end_inset
+
+ the standardised residuals, i.e.
  residuals normalised by each of their variance in order to get Standard
  Normally Distributed residuals.
 \end_layout
@@ -514,6 +538,13 @@ centering
 
 \begin_layout Plain Layout
 Standardised Residuals
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Standardised-Residuals"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -533,8 +564,21 @@ Standardised Residuals
 \begin_layout Standard
 The model assumes that the Standardised Residuals are normally distributed
  around 0 with variance 1.
- Clearly the plot suggests otherwise.
- Firstly, we have too many points located at 
+ Clearly Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Standardised-Residuals"
+
+\end_inset
+
+ suggests otherwise.
+ Given these assumptions we expect 95% of data points to fall between -2
+ and 2.
+ In this case, 5.5% fall outside this region which in itself does not indiate
+ that strong a significance.
+
+\series bold
+ too many points located at 
 \begin_inset Quotes eld
 \end_inset
 
@@ -542,10 +586,17 @@ outlier
 \begin_inset Quotes erd
 \end_inset
 
- positions under a Gaussian Distribution of mean 0 and variance 1.
+ positions under a Gaussian Distribution of mean 0 and variance 1
+\series default
+.
+
+\series bold
  The empirical distribution of our Standardised Residuals seem skewed towards
  positive values.
- The plot also suggests the presence of heteroskedasticity (i.e.
+
+\series default
+ More importantly, the plot also suggests the presence of heteroskedasticity
+ (i.e.
  a non constant variance through time).
  Indeed, we can see that the concentration of points varies through time.
  Clearly the assumption that the errors are Normally Distributed with mean
@@ -553,10 +604,17 @@ outlier
 \end_layout
 
 \begin_layout Standard
-We look further into the flaws of this model by analyzing the following
- 4 plots.
- We will also try to extract interesting relationships that might help us
- build a better model:
+Another way to anlyse the violations of our assumptions is by looking at
+ the 4 plots shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Summary-Linear"
+
+\end_inset
+
+.
+ We will extract interesting relationships presented here that will help
+ us build a better model:
 \end_layout
 
 \begin_layout Standard
@@ -596,6 +654,13 @@ centering
 
 \begin_layout Plain Layout
 Summary Plots on Residuals of our Model
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Summary-Linear"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -614,20 +679,23 @@ Summary Plots on Residuals of our Model
 
 \begin_layout Itemize
 Residuals vs Fitted Values.
- This is informative because it gives us an idea of how the residuals are
- distributed relative to the fitted values ( the estimated 
+ This plot is informative because it gives us an idea of any trends in our
+ approximation to the value of 
 \begin_inset Formula $\hat{Y}$
 \end_inset
 
-).
- A big flaw of this Linear Model is that it estimates a significant number
- of negative values for 
+.
+ An clear problem with this Model is that it estimates some negative values
+ for 
 \begin_inset Formula $\hat{Y}$
 \end_inset
 
- whereas this clearly can't be possible since Y is a concentration.
+ when this can't be possible since Y is a concentration, a strictly positive
+ value.
  For our next models, we will check for this.
- This hints us towards the fact that we must have power law decay in 
+ 
+\series bold
+This hints us towards the fact that we must have power law decay in 
 \begin_inset Formula $\hat{Y}$
 \end_inset
 
@@ -640,19 +708,22 @@ Residuals vs Fitted Values.
 \end_layout
 
 \begin_layout Itemize
-The Normal Q-Q plot confirms that the residuals are not Normally Distributed.
+The Normal Q-Q plot confirms that the residuals are not Normally Distributed
+ as we assumed with this model.
  We see a strong deviation from the expected line if it was Normally Distributed
  with mean 0.
 \end_layout
 
 \begin_layout Standard
-Clearly, we have shown that a simple linear model performs poorly when trying
- to model the data and we need to improve on it.
+We have shown that a simple linear model performs poorly when trying to
+ model the data and we need to improve on it.
  Before we start making our model more complicated by adding more features
- or modelling complex relationship, we follow Occam's principle of parsimony
+ or modelling complex relationship, we follow Occam's principle of parsimony,
  and try to only model the needed relationships.
- Indeed, going back to our initial Matrix plot, we noted earlier that the
- Humidity had little visible relationship with NOx.
+ Indeed, going back to our initial Matrix plot, 
+\series bold
+we noted earlier that the Humidity had little visible relationship with
+ NOx.
  
 \end_layout
 
@@ -735,6 +806,13 @@ centering
 
 \begin_layout Plain Layout
 Matrix Plot of our Log-transformed variables
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Matrix-Log"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -788,6 +866,13 @@ centering
 
 \begin_layout Plain Layout
 Summary Plots of the Residuals of our Log-transformed Model
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Summary-Log"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
